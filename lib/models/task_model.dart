@@ -13,25 +13,32 @@ class TaskModel {
   final double estimatedEffortHours;
   final String energyLevel;
 
-  TaskModel ({
-    required this.id, required this.title, required this.category, required this.date,
-    required this.startTime, required this.endTime, required this.urgency, required this.importance,
-    required this.estimatedEffortHours, required this.energyLevel,
+  TaskModel({
+    required this.id,
+    required this.title,
+    required this.category,
+    required this.date,
+    required this.startTime,
+    required this.endTime,
+    required this.urgency,
+    required this.importance,
+    required this.estimatedEffortHours,
+    required this.energyLevel,
+  });
 
-});
-
-  Map<String, dynamic> toJson(){
-    return{
-      'id' : id, 'title' : title, 'category' : category,
-      'date' : date.toIso8601String().split('T').first,
-      'startTime' : '\${startTime.hour} : \${startTime.minute}',
-      'endTime' : '\${startTime.hour} : \${startTime.minute}',
-      'urgency' :urgency, 'importance' : importance,
-      'estimatedEffortHours' : estimatedEffortHours, 'energyLevel' : energyLevel,
-
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'category': category,
+      'date': date.toIso8601String().split('T').first,
+      'startTime': '${startTime.hour}:${startTime.minute.toString().padLeft(2, '0')}',
+      // FIX: was using startTime.hour and startTime.minute instead of endTime
+      'endTime': '${endTime.hour}:${endTime.minute.toString().padLeft(2, '0')}',
+      'urgency': urgency,
+      'importance': importance,
+      'estimatedEffortHours': estimatedEffortHours,
+      'energyLevel': energyLevel,
     };
-
   }
-
 }
-

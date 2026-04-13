@@ -9,22 +9,27 @@ class ScheduleProvider extends ChangeNotifier {
   List<TaskModel> get task => _tasks;
 
   void addTask({
-    required String title, required String category,required DateTime date,
-    required TimeOfDay startTime, required TimeOfDay endTime,
-    required int urgency, required int importance,
-    required double estimatedEffortHours, required String energyLevel,
-  }){
+    required String title,
+    required String category,
+    required DateTime date,
+    required TimeOfDay startTime,
+    required TimeOfDay endTime,
+    required int urgency,
+    required int importance,
+    required double estimatedEffortHours,
+    required String energyLevel,
+  }) {
     final newTask = TaskModel(
-        id: _uuid.v4(),
-        title: title,
-        category: category,
-        date: date,
-        startTime: startTime,
-        endTime: endTime,
-        urgency: urgency,
-        importance: importance,
-        estimatedEffortHours: estimatedEffortHours,
-        energyLevel: energyLevel
+      id: _uuid.v4(),
+      title: title,
+      category: category,
+      date: date,
+      startTime: startTime,
+      endTime: endTime,
+      urgency: urgency,
+      importance: importance,
+      estimatedEffortHours: estimatedEffortHours,
+      energyLevel: energyLevel,
     );
     _tasks.add(newTask);
     notifyListeners();
@@ -34,5 +39,4 @@ class ScheduleProvider extends ChangeNotifier {
     _tasks.removeWhere((task) => task.id == id);
     notifyListeners();
   }
-
 }

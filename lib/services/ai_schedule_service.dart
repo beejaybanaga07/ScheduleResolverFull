@@ -25,7 +25,7 @@ class AiScheduleService extends ChangeNotifier {
 
 
     try {
-      final model = GenerativeModel(model: 'gemini-2.5-flash', apiKey: _apikey);
+      final model = GenerativeModel(model: 'gemini-robotics-er-1.5-preview', apiKey: _apikey);
       final _ = jsonEncode(task.map((t) =>t.toJson()).toList());
 
       final prompt = """
